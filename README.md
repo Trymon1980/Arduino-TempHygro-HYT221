@@ -41,7 +41,6 @@ IST HYT 221: https://www.ist-ag.com/sites/default/files/downloads/HYT221.pdf
 ```
 
 This project is to utilize an Arduino nano with the IST HYT 221 high precission temperature and humidity 
-sensor for very precise readings. Display out via 16x2 LCD.
-HYT221 reasings up to 6 decimal digits with high precission. 
+sensor for very precise readings. Display out via 16x2 LCD. 
 Arduino code to receive information adapted from https://github.com/stylesuxx/Arduino-HYT-221-I2C/tree/master
 
