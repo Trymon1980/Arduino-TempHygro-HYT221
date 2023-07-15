@@ -34,7 +34,8 @@ IST HYT 221:
   *4:    SCL
 
 
-This project is to utilize an Arduino nano with the IST HYT 221 high precission temperature and humidity sensor for very precise readings. Display out via 16x2 LCD.
+This project is to utilize an Arduino nano with the IST HYT 221 high precission temperature and humidity 
+sensor for very precise readings. Display out via 16x2 LCD.
 In the current state DH11 is used instead of HYT221 to start the Project.
 As soon HYT221 is delivered the code will be rewritten to utilize the correct sensor.
 README won't cover details of DH11 and this will be removed as soon the chosen sensor could be used. 
