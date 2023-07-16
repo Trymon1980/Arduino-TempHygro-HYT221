@@ -40,7 +40,7 @@ void loop()
     humidity = 100.0 / pow(2,14) * rawHumidity;             //calculate humidity. Calculation provided in HYT221 documentation
     
     // combine temperature bytes and calculate temperature
-    b4 = (b4 >> 2); // Mask away 2 least significant bits see HYT 221 doc
+    b4 = (b4 >> 2);                                         // Mask away 2 least significant bits see /Datasheets/HYT_Documentation.pdf
     int rawTemperature = b3 << 6 | b4;
     temperature = 165.0 / pow(2,14) * rawTemperature - 40;  //calculate temperature. Calculation provided in HYT221 documentation
   
@@ -56,8 +56,8 @@ void loop()
   }
   else
   {
-    lcd.clear();
-    lcd.print("Not enough bytes available on wire.");
-    
+    lcd.clear();                                            //Clear screen of LCD
+    lcd.print("Not enough bytes available on wire.");       //Print given String to LCD
+    delay(2000);                                            //Delay loop for 2000ms (2 seconds)
   }
 }
