@@ -6,7 +6,7 @@
 #define HYTADDR 0x28                                        //Address for HYT 221 communication
 #define LCDI2CADDRESS 0x27                                  //Address for I2C communication                   
 #define LCDCOLUMS 16                                        //Number of LCD Display colums
-#define LCDLINES 2000                                       //Number of LCD Display lines
+#define LCDLINES 2                                          //Number of LCD Display lines
 
 LiquidCrystal_I2C lcd(LCDI2CADDRESS, LCDCOLUMS, LCDLINES);  //Create lcd object with defined parameters
 
