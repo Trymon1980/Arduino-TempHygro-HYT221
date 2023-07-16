@@ -46,11 +46,11 @@ void loop()
   
     lcd.clear();                                            //Clear screen of LCD
     lcd.print("T:  ");                                      //Print in first line of LCD the shown string
-    lcd.print(String(temperature, 2));                      //Print Temperature reading of HYT211 as String with 7 decimal digits. Only 6 are delivered. 7th is always 0.
+    lcd.print(String(temperature, 3));                      //Print Temperature reading of HYT211 as String with 7 decimal digits.
     lcd.print(" C");                                        //Print C for Celsius at the end
     lcd.setCursor (0,1);                                    //Move cursor to first colum in second line
     lcd.print("rF: ");                                      //Print rF for relative Feuchte (relative Humidity)
-    lcd.print(String(humidity, 2));                         //Print Humidity reading of HYT211 as String with 7 decimal digits. Only 6 are delivered. 7th is always 0.
+    lcd.print(String(humidity, 2));                         //Print Humidity reading of HYT211 as String with 7 decimal digits. 
     lcd.print(" %");                                        //print % at the end
     delay(2000);                                            //Delay loop for 2000ms (2 seconds)
   }
