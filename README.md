@@ -8,10 +8,11 @@ LiquidCrystal_I2C.h; LiquidCrystal I2C by Marco Schwartz; https://www.arduinolib
 
 ## Used Hardware:
 ```
-Arduino nano: https://docs.arduino.cc/hardware/nano
-LCD Display 16 x 2 with I2C module: https://wiki-content.arduino.cc/documents/datasheets/LCDscreen.PDF
-I2C module: http://www.handsontec.com/dataspecs/module/I2C_1602_LCD.pdf
-IST HYT 221: https://www.ist-ag.com/sites/default/files/downloads/HYT221.pdf
+[Arduino nano](Datasheets/Arduino nano-datasheet.pdf)
+[LCD Display 16 x 2 with I2C module](LCDscreen16x2.pdf)
+[I2C module](I2C_1602_LCD.pdf)
+[IST HYT 221 Datasheet](Datasheet_Digital_humidity_sensor_HYT221_.pdf)
+[IST HYT 221 Documentation](HYT_Documentation.pdf)
 ```
 
 # PIN connections:
