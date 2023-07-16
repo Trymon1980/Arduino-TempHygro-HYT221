@@ -51,7 +51,7 @@ void loop()
     lcd.setCursor (0,1);                                    //Move cursor to first colum in second line
     lcd.print("rF: ");                                      //Print rF for relative Feuchte (relative Humidity)
     lcd.print(String(humidity, 2));                         //Print Humidity reading of HYT211 as String with 7 decimal digits. 
-    lcd.print("  %");                                        //print % at the end
+    lcd.print("  %");                                       //print % at the end
     delay(2000);                                            //Delay loop for 2000ms (2 seconds)
   }
   else
