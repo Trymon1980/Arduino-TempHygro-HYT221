@@ -6,10 +6,10 @@
 
 ## Used Hardware:
 - [Arduino nano](Datasheets/Arduino_nano_datasheet.pdf)
-- [LCD Display 16 x 2 with I2C module](LCDscreen16x2.pdf)
-- [I2C module](I2C_1602_LCD.pdf)
-- [IST HYT 221 Datasheet](Datasheet_Digital_humidity_sensor_HYT221_.pdf)
-- [IST HYT 221 Documentation](HYT_Documentation.pdf)
+- [LCD Display 16 x 2 with I2C module](Datasheets/LCDscreen16x2.pdf)
+- [I2C module](Datasheets/I2C_1602_LCD.pdf)
+- [IST HYT 221 Datasheet](Datasheets/Datasheet_Digital_humidity_sensor_HYT221_.pdf)
+- [IST HYT 221 Documentation](Datasheets/HYT_Documentation.pdf)
 
 # PIN connections:
 ## Arduino:
