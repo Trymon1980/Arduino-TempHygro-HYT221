@@ -24,13 +24,11 @@ void writeLCD(double reading, int i)
     lcd.setCursor(0,i);                                     //set cursor in colum 0, line 0
     if (i == 0)
     {
-      dtostrf(reading,i+6,i+3,buffer1);                     //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1
-      sprintf(buffer2,"T:  %s C",buffer1);                  //Create a formated string for temperature, based on buffer1, and store in buffer 2
+      sprintf(buffer2,"T:  %s C",dtostrf(reading,i+6,i+3,buffer1));   //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1 and create a formated string for temperature, based on buffer1, and store in buffer 2
     }
     else
     {
-      dtostrf(reading,i+5,i+1,buffer1);                     //Convert double humidity to String with 5 digits, 2 decimal and store in buffer 1
-      sprintf(buffer2,"rF:%s  %%",buffer1);                 //Create a formated string for humidity, based on buffer1, and store in buffer 2
+      sprintf(buffer2,"rF:%s  %%",dtostrf(reading,i+5,i+1,buffer1));  //Convert double humidity to String with 5 digits, 2 decimal and store in buffer 1 and create a formated string for humidity, based on buffer1, and store in buffer 2
     }
     lcd.print(buffer2);                                     //print buffer2 to LCD
 }
@@ -54,7 +52,6 @@ void loop()
 {
   Wire.beginTransmission(HYTADDR);                          // Begin transmission with given device on I2C bus
   Wire.requestFrom(HYTADDR, 4);                             // Request 4 bytes
-
   // Read the bytes if they are available
   // The first two bytes are humidity the last two are temperature
   if(Wire.available() == 4) 
@@ -63,7 +60,6 @@ void loop()
     int b2 = Wire.read();                                   //store second byte
     int b3 = Wire.read();                                   //store third byte
     int b4 = Wire.read();                                   //store fourth byte
-    
     Wire.endTransmission();                                 //End transmission and release I2C bus
 
     writeLCD(readTemperature(b3, b4), 0);                   //Call write to LCD function and call readTemperature function as parameter
