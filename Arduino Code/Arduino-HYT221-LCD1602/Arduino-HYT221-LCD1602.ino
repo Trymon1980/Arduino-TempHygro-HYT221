@@ -7,8 +7,8 @@
 #define LCDI2CADDRESS 0x27                                  //Address for I2C communication                   
 #define LCDCOLUMS 16                                        //Number of LCD Display colums
 #define LCDLINES 2                                          //Number of LCD Display lines
-#define OFFSET_TEMP -0.031
-#define OFFSET_HUM 0
+#define OFFSET_TEMP -0.031                                  //Offset for HYT221 Temperature reading
+#define OFFSET_HUM 0                                        //Offset for HYT221 Humidity reading
 
 LiquidCrystal_I2C lcd(LCDI2CADDRESS, LCDCOLUMS, LCDLINES);  //Create lcd object with defined parameters
 
