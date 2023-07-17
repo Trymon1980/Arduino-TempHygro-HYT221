@@ -20,6 +20,8 @@ void loop()
 {
   double humidity;                                          //Variable for huiḿidity
   double temperature;                                       //Variable for temperature
+  char buffer1[6];                                          //buffer for dtostrf
+  char buffer2[6];                                          //buffer for sprintf
 
   Wire.beginTransmission(HYTADDR);                          // Begin transmission with given device on I2C bus
   Wire.requestFrom(HYTADDR, 4);                             // Request 4 bytes
@@ -33,10 +35,10 @@ void loop()
     int b3 = Wire.read();
     int b4 = Wire.read();
     
-    Wire.endTransmission();                                 // End transmission and release I2C bus
+    Wire.endTransmission();                                 //End transmission and release I2C bus
 
-    int rawHumidity = b1 << 8 | b2;                         // combine humidity bytes 
-    rawHumidity =  (rawHumidity &= 0x3FFF);                 // compound bitwise to get 14 bit measurement first two bits are status/stall bit
+    int rawHumidity = b1 << 8 | b2;                         //combine humidity bytes 
+    rawHumidity =  (rawHumidity &= 0x3FFF);                 //compound bitwise to get 14 bit measurement first two bits are status/stall bit
     humidity = 100.0 / pow(2,14) * rawHumidity;             //calculate humidity. Calculation provided in HYT221 documentation
     
     // combine temperature bytes and calculate temperature
@@ -45,13 +47,13 @@ void loop()
     temperature = 165.0 / pow(2,14) * rawTemperature - 40;  //calculate temperature. Calculation provided in HYT221 documentation
   
     lcd.clear();                                            //Clear screen of LCD
-    lcd.print("T:  ");                                      //Print in first line of LCD the shown string
-    lcd.print(String(temperature, 3));                      //Print Temperature reading of HYT211 as String with 7 decimal digits.
-    lcd.print(" C");                                        //Print C for Celsius at the end
-    lcd.setCursor (0,1);                                    //Move cursor to first colum in second line
-    lcd.print("rF: ");                                      //Print rF for relative Feuchte (relative Humidity)
-    lcd.print(String(humidity, 2));                         //Print Humidity reading of HYT211 as String with 7 decimal digits. 
-    lcd.print("  %");                                       //print % at the end
+    dtostrf(temperature,6,3,buffer1);                       //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1
+    sprintf(buffer2,"T:  %s C",buffer1);                    //Create a formated string for temperature, based on buffer1, and store in buffer 2
+    lcd.print(buffer2);                                     //print buffer2 to LCD
+    lcd.setCursor (0,1);                                    //set cursor in colum0, line 1
+    dtostrf(humidity,5,2,buffer1);                          //Convert double humidity to String with 5 digits, 3 decimal and store in buffer 1
+    sprintf(buffer2,"rF: %s  %%",buffer1);                  //Create a formated string for humidity, based on buffer1, and store in buffer 2
+    lcd.print(buffer2);                                     //print buffer2 to LCD
     delay(2000);                                            //Delay loop for 2000ms (2 seconds)
   }
   else
