@@ -7,6 +7,8 @@
 #define LCDI2CADDRESS 0x27                                  //Address for I2C communication                   
 #define LCDCOLUMS 16                                        //Number of LCD Display colums
 #define LCDLINES 2                                          //Number of LCD Display lines
+#define OFFSET_TEMP -0.031
+#define OFFSET_HUM 0
 
 LiquidCrystal_I2C lcd(LCDI2CADDRESS, LCDCOLUMS, LCDLINES);  //Create lcd object with defined parameters
 
@@ -38,14 +40,14 @@ double readTemperature(int b3, int b4)
     // combine temperature bytes and calculate temperature
     b4 = (b4 >> 2);                                         //Mask away 2 least significant bits see /Datasheets/HYT_Documentation.pdf
     int rawTemperature = b3 << 6 | b4;
-    return(165.0 / pow(2,14) * rawTemperature - 40);        //calculate temperature. Calculation provided in HYT221 documentation
+    return(165.0 / pow(2,14) * rawTemperature - 40 + OFFSET_TEMP);        //calculate temperature. Calculation provided in HYT221 documentation
 }
 
 double readHumidity(int b1, int b2)
 {
     int rawHumidity = b1 << 8 | b2;                         //combine humidity bytes 
     rawHumidity =  (rawHumidity &= 0x3FFF);                 //compound bitwise to get 14 bit measurement first two bits are status/stall bit
-    return(100.0 / pow(2,14) * rawHumidity);                //calculate humidity. Calculation provided in HYT221 documentation
+    return(100.0 / pow(2,14) * rawHumidity + OFFSET_HUM);                //calculate humidity. Calculation provided in HYT221 documentation
 }
 
 void loop()
