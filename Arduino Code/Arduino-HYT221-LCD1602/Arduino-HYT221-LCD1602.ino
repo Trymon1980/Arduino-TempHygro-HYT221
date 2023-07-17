@@ -47,10 +47,11 @@ void loop()
     temperature = 165.0 / pow(2,14) * rawTemperature - 40;  //calculate temperature. Calculation provided in HYT221 documentation
   
     lcd.clear();                                            //Clear screen of LCD
+    lcd.setCursor(0,0);                                     //set cursor in colum 0, line 0
     dtostrf(temperature,6,3,buffer1);                       //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1
     sprintf(buffer2,"T:  %s C",buffer1);                    //Create a formated string for temperature, based on buffer1, and store in buffer 2
     lcd.print(buffer2);                                     //print buffer2 to LCD
-    lcd.setCursor (0,1);                                    //set cursor in colum0, line 1
+    lcd.setCursor(0,1);                                    //set cursor in colum 0, line 1
     dtostrf(humidity,5,2,buffer1);                          //Convert double humidity to String with 5 digits, 3 decimal and store in buffer 1
     sprintf(buffer2,"rF: %s  %%",buffer1);                  //Create a formated string for humidity, based on buffer1, and store in buffer 2
     lcd.print(buffer2);                                     //print buffer2 to LCD
