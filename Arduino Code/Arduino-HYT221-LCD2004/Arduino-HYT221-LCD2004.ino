@@ -8,7 +8,7 @@
 #define LCDCOLUMS 20                                        //Number of LCD Display colums
 #define LCDLINES 4                                          //Number of LCD Display lines
 #define OFFSET_TEMP -0.031                                  //Offset for HYT221 Temperature reading
-#define OFFSET_HUM 0                                        //Offset for HYT221 Humidity reading
+#define OFFSET_HUM 3.4                                      //Offset for HYT221 Humidity reading
 
 double mintemp = 150;
 double maxtemp = -50;
@@ -31,11 +31,11 @@ void writeLCD(double reading, int i)
     lcd.setCursor(0,i);                                     //set cursor in colum 0, line 0
     if (i == 0)
     {
-      sprintf(buffer2,"T:  %sC",dtostrf(reading,i+6,i+3,buffer1));   //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1 and create a formated string for temperature, based on buffer1, and store in buffer 2
+      sprintf(buffer2,"T: %s C",dtostrf(reading,i+4,i+2,buffer1));   //Convert double temperature to String with 6 digits, 3 decimal and store in buffer 1 and create a formated string for temperature, based on buffer1, and store in buffer 2
     }
     else
     {
-      sprintf(buffer2,"rF:%s%%",dtostrf(reading,i+5,i+1,buffer1));  //Convert double humidity to String with 5 digits, 2 decimal and store in buffer 1 and create a formated string for humidity, based on buffer1, and store in buffer 2
+      sprintf(buffer2,"rF:%s %%",dtostrf(reading,i+4,i+1,buffer1));  //Convert double humidity to String with 5 digits, 2 decimal and store in buffer 1 and create a formated string for humidity, based on buffer1, and store in buffer 2
     }
     lcd.print(buffer2);                                     //print buffer2 to LCD
 }
@@ -46,16 +46,16 @@ void writeLCDhistory(double mitemp, double matemp, double mihum, double mahum)
   char buffer2[6];
   char buffer3[6];
   lcd.setCursor(0,2);
-  sprintf(buffer3,"T:  %sC",dtostrf(mitemp,6,3,buffer1));
+  sprintf(buffer3,"T: %s C",dtostrf(mitemp,4,1,buffer1));
   lcd.print(buffer3);
-  sprintf(buffer3,"%sC",dtostrf(matemp,6,3,buffer2));
-  lcd.setCursor(12,2);
+  sprintf(buffer3,"/ %s C",dtostrf(matemp,1,1,buffer2));
+  lcd.setCursor(10,2);
   lcd.print(buffer3);
   lcd.setCursor(0,3);
-  sprintf(buffer3,"rF: %s%%",dtostrf(mihum,5,2,buffer1));
+  sprintf(buffer3,"rF:%s %%",dtostrf(mihum,4,1,buffer1));
   lcd.print(buffer3);
-  lcd.setCursor(12,3);
-  sprintf(buffer3,"%s%%",dtostrf(mahum,5,2,buffer2));
+  lcd.setCursor(10,3);
+  sprintf(buffer3,"/ %s %%",dtostrf(mahum,4,1,buffer2));
   lcd.print(buffer3);
 }
 
